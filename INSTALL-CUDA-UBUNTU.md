@@ -14,6 +14,10 @@ cd rexgen/src
 cd ~/src
 git clone git://github.com/magnumripper/JohnTheRipper -b CUDA john
 
+./configure --enable-cuda
+make -s clean
+make -sj$(nproc)
+
 <!-- Run TEST -->
 ../run/john --test=0
 ../run/john --test

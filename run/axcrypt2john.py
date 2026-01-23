@@ -20,9 +20,9 @@ SIZE_ITERATION=4
 StructKeys=[]
 
 def usage():
-	print >> sys.stderr, 'usage: %s <axxfile> [KEY-FILE]\n' % sys.argv[0]
-	print >> sys.stderr, 'Script to extract hash from AxCrypt encrypted file or self-decrypting binary\n'
-	print >> sys.stderr, 'optional arguments:\n  KEY-FILE			 path to optional key-file provided'
+	sys.stderr.write('usage: %s <axxfile> [KEY-FILE]\n' % sys.argv[0])
+	sys.stderr.write('Script to extract hash from AxCrypt encrypted file or self-decrypting binary\n')
+	sys.stderr.write('optional arguments:\n  KEY-FILE			 path to optional key-file provided')
 	sys.exit(1)
 
 def DWORD_to_int(string_dword):
@@ -50,7 +50,7 @@ def parse_axxfile(axxfile):
 	sizeof_file=len(axxdata)
 
 	if (axxdata[:16] != GUID):
-		print "Be Careful, GUID is different from axcrypt's one..." 
+		print("Be Careful, GUID is different from axcrypt's one...") 
 
 	header_datalen_offset = 16
 	headertype = '\x02' # first type encountered
@@ -61,7 +61,7 @@ def parse_axxfile(axxfile):
 		headertype = ord(axxdata[header_datalen_offset + OFFSET_TYPE])
 		
 		# probably a StructKey
-		if (header_datalen == 49 and headertype == 04):
+		if (header_datalen == 49 and headertype == 4):
 			offset_to_keydata = header_datalen_offset + OFFSET_TYPE + 1
 			offset_to_salt = offset_to_keydata + SIZE_KEYDATA
 			offset_to_iteration = offset_to_salt + SIZE_SALT
@@ -75,7 +75,7 @@ def parse_axxfile(axxfile):
 		header_datalen_offset += header_datalen
 		
 		if (header_datalen_offset >= sizeof_file):
-			print "Could not parse file, exiting"
+			print("Could not parse file, exiting")
 			sys.exit(0)
 	return StructKeys[0]['KeyData'],StructKeys[0]['Salt'],StructKeys[0]['Iteration']
 
@@ -99,4 +99,4 @@ if __name__=="__main__":
 		key_file_name = '*' + sys.argv[2][sys.argv[2].rfind("/")+1:]
 		keyfile.close()
 
-	print axxfile + key_file_name + ":$axcrypt$" + "*" + str(version) + "*" + str(nb_iteration) + "*" + Salt.encode("hex") + "*" + wrappedKey.encode("hex") + keyfile_content
+	print(axxfile + key_file_name + ":$axcrypt$" + "*" + str(version) + "*" + str(nb_iteration) + "*" + Salt.encode("hex") + "*" + wrappedKey.encode("hex") + keyfile_content)

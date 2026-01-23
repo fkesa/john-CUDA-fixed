@@ -578,7 +578,7 @@ class MasterKey(DataStruct):
         self.cipherAlgo = CryptoAlgo(data.eat("L"))
         self.ciphertext = data.remain()
         if self.SID:
-            print self.jhash()
+            print(self.jhash())
 
     def decryptWithHash(self, userSID, pwdhash):
         """Decrypts the masterkey with the given user's hash and SID.
@@ -1037,7 +1037,7 @@ class DPAPIProbe(DataStruct):
 
 
 def usage():
-    print """Usage:
+    print("""Usage:
 
 efs2john.py --masterkey=samples/openwall.efs/92573301-74fa-4e55-bd38-86fc558fa25e \\
     --sid="S-1-5-21-1482476501-1659004503-725345543-1003"
@@ -1047,7 +1047,7 @@ efs2john.py --masterkey=samples/openwall.efs.2/21d67870-8257-49e0-b2de-c58324271
 
 efs2john.py --masterkey=samples/Win-2012-non-DC/1b52eb4f-440f-479e-b84a-654fdccad797 \\
     --sid="S-1-5-21-689418962-3671548705-686489014-1001" --password="openwall@123"
-"""
+""")
 
 if __name__ == "__main__":
     parser =  argparse.ArgumentParser()
@@ -1065,4 +1065,4 @@ if __name__ == "__main__":
     mkdata = open(args.masterkey, 'rb').read()
     mkp.addMasterKey(mkdata, SID=args.sid)
     if args.password:
-        print mkp.try_credential(args.sid, args.password)
+        print(mkp.try_credential(args.sid, args.password))

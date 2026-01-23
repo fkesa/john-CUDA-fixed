@@ -21,7 +21,7 @@ def process_file(filename, is_standard):
     username = "?"
 
     for line in fd.readlines():
-        if re.match('^\s*\S+\s*:\s*$',line):
+        if re.match(r'^\s*\S+\s*:\s*$',line):
             username = line.split(':')[0]
 
         if "password = " in line and "smd5" in line:
@@ -73,6 +73,6 @@ if __name__ == "__main__":
     if args.filename:
         process_file(args.filename, args.is_standard)
     else:   
-        print "Please specify a filename (-f)"
+        print("Please specify a filename (-f)")
         sys.exit(-1)
 

@@ -821,11 +821,11 @@ import binascii
 def process_file(filename):
     try:
         p1 = readPlist(filename)
-    except IOError, e:
-        print >> sys.stderr, "%s : %s" % (filename, str(e))
+    except IOError as e:
+        sys.stderr.write("%s : %s\n" % (filename, str(e)))
         return -1
     except InvalidPlistException:
-        print >> sys.stderr, "%s is not a plist file!" % filename
+        sys.stderr.write("%s is not a plist file!\n" % filename)
         return -1
 
     s = StringIO(p1.get('ShadowHashData', [None])[0])
@@ -865,11 +865,11 @@ def process_file(filename):
 
     # from passlib.hash import grub_pbkdf2_sha512
     # hash = grub_pbkdf2_sha512.encrypt("password", rounds=iterations, salt=salt)
-    # print hash
+    # print(hash)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print >> sys.stderr, "Usage: %s <Mountain Lion .plist files>" % sys.argv[0]
+        sys.stderr.write("Usage: %s <Mountain Lion .plist files>\n" % sys.argv[0])
         sys.exit(-1)
 
     for i in range(1, len(sys.argv)):

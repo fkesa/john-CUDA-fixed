@@ -1,0 +1,100 @@
+  301 |                 strncpy(set, line->data, 64);
+      |                 ^
+common-opencl.c:336:45: warning: ‘%s’ directive output may be truncated writing up to 2047 bytes into a region of size 64 [-Wformat-truncation=]
+  336 |                 snprintf(tmp, sizeof(tmp), "%s", dname);
+      |                                             ^~   ~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from jumbo.h:25,
+                 from os-autoconf.h:29,
+                 from os.h:20,
+                 from common-opencl.c:23:
+In function ‘snprintf’,
+    inlined from ‘opencl_driver_info’ at common-opencl.c:336:3,
+    inlined from ‘opencl_list_devices’ at common-opencl.c:2588:4:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: ‘__builtin_snprintf’ output between 1 and 2048 bytes into a destination of size 64
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+common-opencl.c: In function ‘opencl_list_devices’:
+common-opencl.c:333:53: warning: ‘%s’ directive output may be truncated writing up to 2047 bytes into a region of size 64 [-Wformat-truncation=]
+  333 |                         snprintf(ret, sizeof(ret), "%s - Crimson %s", dname, name);
+      |                                                     ^~                ~~~~~
+In function ‘snprintf’,
+    inlined from ‘opencl_driver_info’ at common-opencl.c:333:4,
+    inlined from ‘opencl_list_devices’ at common-opencl.c:2588:4:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: ‘__builtin___snprintf_chk’ output between 12 and 2122 bytes into a destination of size 64
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+common-opencl.c: In function ‘opencl_list_devices’:
+common-opencl.c:331:53: warning: ‘%s’ directive output may be truncated writing up to 2047 bytes into a region of size 64 [-Wformat-truncation=]
+  331 |                         snprintf(ret, sizeof(ret), "%s - Catalyst %s", dname, name);
+      |                                                     ^~                 ~~~~~
+In function ‘snprintf’,
+    inlined from ‘opencl_driver_info’ at common-opencl.c:331:4,
+    inlined from ‘opencl_list_devices’ at common-opencl.c:2588:4:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: ‘__builtin___snprintf_chk’ output between 13 and 2123 bytes into a destination of size 64
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+common-opencl.c: In function ‘opencl_list_devices’:
+common-opencl.c:364:39: warning: ‘%s’ directive output may be truncated writing up to 2047 bytes into a region of size between 1 and 64 [-Wformat-truncation=]
+  364 |         snprintf(ret, sizeof(ret), "%s%s", tmp, dname);
+      |                                       ^~        ~~~~~
+In function ‘snprintf’,
+    inlined from ‘opencl_driver_info’ at common-opencl.c:364:2,
+    inlined from ‘opencl_list_devices’ at common-opencl.c:2588:4:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: ‘__builtin___snprintf_chk’ output between 1 and 2111 bytes into a destination of size 64
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops opencl_autotune.c -o opencl_autotune.o
+In file included from /usr/include/CL/cl.h:20,
+                 from common-opencl.h:22,
+                 from opencl_autotune.c:14:
+/usr/include/CL/cl_version.h:22:9: note: ‘#pragma message: cl_version.h: CL_TARGET_OPENCL_VERSION is not defined. Defaulting to 300 (OpenCL 3.0)’
+   22 | #pragma message("cl_version.h: CL_TARGET_OPENCL_VERSION is not defined. Defaulting to 300 (OpenCL 3.0)")
+      |         ^~~~~~~
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops bt.c -o bt.o
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops bt_hash_type_64.c -o bt_hash_type_64.o
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops bt_hash_type_128.c -o bt_hash_type_128.o
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops bt_hash_type_192.c -o bt_hash_type_192.o
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops bt_twister.c -o bt_twister.o
+gcc -DAC_BUILT  -DARCH_LITTLE_ENDIAN=1 -march=native -mavx2 -DJOHN_AVX2 -c -fopenmp   -DHAVE_HT x86-64.S
+gcc -DAC_BUILT -march=native -mavx2 -DJOHN_AVX2 -c -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -DHAVE_CUDA  -fopenmp   -DHAVE_HT  -I/usr/local/include -DHAVE_OPENCL  -funroll-loops simd-intrinsics.c -o simd-intrinsics.o
+make -C aes all
+make[2]: Entering directory '/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/aes'
+make -C openssl all
+make[3]: Entering directory '/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/aes/openssl'
+gcc -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600  -c ossl_aes.c -o ossl_aes.o
+make[3]: Leaving directory '/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/aes/openssl'
+gcc -g -O2 -I/usr/local/include -DARCH_LITTLE_ENDIAN=1   -Wall -Wdeclaration-after-statement -fomit-frame-pointer -Wno-deprecated-declarations -Wformat-extra-args  -Wunused-but-set-variable -std=gnu89 -Wdate-time -D_POSIX_SOURCE -D_GNU_SOURCE -D_XOPEN_SOURCE=600   -c aes.c -o aes.o
+ar -rs aes.a aes.o openssl/ossl_aes.o
+ar: creating aes.a
+make[2]: Leaving directory '/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/aes'
+gcc jumbo.o john-mpi.o DES_fmt.o DES_std.o DES_bs.o DES_bs_b.o BSDI_fmt.o MD5_fmt.o MD5_std.o cryptmd5_common.o BF_fmt.o BF_std.o BF_common.o scrypt_fmt.o escrypt/crypto_scrypt-best.o escrypt/crypto_scrypt-common.o escrypt/sha256.o AFS_fmt.o LM_fmt.o trip_fmt.o NT_fmt.o KeccakDuplex.o KeccakF-1600-opt64.o KeccakHash.o KeccakSponge.o whirlpool.o haval.o skein.o md2.o panama.o timer.o md5.o rc4.o hmacmd5.o base64.o base64_convert.o md4.o sha2.o dynamic_fmt.o dynamic_parser.o dynamic_preloads.o dynamic_utils.o dynamic_big_crypt.o dynamic_compiler.o dynamic_compiler_lib.o ripemd.o tiger.o pfx2john.o unrarcmd.o unrarfilter.o unrarhlp.o unrar.o unrarppm.o unrarvm.o rar2john.o zip2john.o pkzip.o racf2john.o dmg2john.o keepass2john.o hccap2john.o 7z_fmt_plug.o AzureAD_common_plug.o AzureAD_fmt_plug.o BFEgg_fmt_plug.o DMD5_fmt_plug.o DOMINOSEC8_fmt_plug.o DOMINOSEC_fmt_plug.o EPI_fmt_plug.o FGT_fmt_plug.o HDAA_fmt_plug.o IPB2_fmt_plug.o KRB4_fmt_plug.o KRB4_std_plug.o KRB5_fmt_plug.o KRB5_std_plug.o MSCHAPv2_bs_fmt_plug.o NETLM_fmt_plug.o NETLMv2_fmt_plug.o NETNTLM_bs_fmt_plug.o NETNTLMv2_fmt_plug.o NETSPLITLM_fmt_plug.o NS_fmt_plug.o PHPS2_fmt_plug.o PHPS_fmt_plug.o PO_fmt_plug.o SKEY_fmt_plug.o SKEY_jtr_plug.o SybaseASE_fmt_plug.o SybasePROP_fmt_plug.o XSHA512_fmt_plug.o XSHA_fmt_plug.o aes_xts_plug.o agilekeychain_fmt_plug.o aix_smd5_fmt_plug.o aix_ssha_fmt_plug.o androidfde_fmt_plug.o argon2_core_plug.o argon2_encoding_plug.o argon2_fmt_plug.o argon2_opt_plug.o argon2_plug.o argon2_ref_plug.o as400_des_fmt_plug.o as400_ssha1_fmt_plug.o asaMD5_fmt_plug.o asn1_plug.o axcrypt_fmt_plug.o bcrypt_pbkdf_plug.o bitcoin_fmt_plug.o bks_fmt_plug.o blackberry_ES10_fmt_plug.o blake2b-ref_plug.o blake2b_plug.o blf_plug.o blockchain_fmt_plug.o chap_fmt_plug.o citrix_ns_fmt_plug.o clipperz_srp_fmt_plug.o cloudkeychain_fmt_plug.o cq_fmt_plug.o crc32_fmt_plug.o crypt-sha1_fmt_plug.o cryptsha256_fmt_plug.o cryptsha512_fmt_plug.o cuda_cryptmd5_fmt_plug.o cuda_cryptsha256_fmt_plug.o cuda_cryptsha512_fmt_plug.o cuda_mscash2_fmt_plug.o cuda_mscash_fmt_plug.o cuda_phpass_fmt_plug.o cuda_pwsafe_fmt_plug.o cuda_rawsha512_fmt_plug.o cuda_wpapsk_fmt_plug.o cuda_xsha512_fmt_plug.o dahua_fmt_plug.o django_fmt_plug.o django_scrypt_fmt_plug.o dmg_fmt_plug.o dragonfly3_fmt_plug.o dragonfly4_fmt_plug.o drupal7_fmt_plug.o dynamic_compiler_fmt_plug.o ecryptfs_fmt_plug.o efs_fmt_plug.o eigrp_fmt_plug.o encfs_common_plug.o encfs_fmt_plug.o episerver_fmt_plug.o feal8_plug.o formspring_fmt_plug.o gost3411-2012-sse41_plug.o gost3411-tables_plug.o gost_fmt_plug.o gpg_common_plug.o gpg_fmt_plug.o has160_fmt_plug.o has160_plug.o haval_fmt_plug.o hmacMD5_fmt_plug.o hmacSHA1_fmt_plug.o hmacSHA256_fmt_plug.o hmacSHA512_fmt_plug.o hmac_sha_plug.o hmailserver_fmt_plug.o hsrp_fmt_plug.o idea_plug.o ike_fmt_plug.o iwork_common_plug.o iwork_fmt_plug.o keepass_fmt_plug.o keychain_fmt_plug.o keyring_fmt_plug.o keystore_common_plug.o keystore_fmt_plug.o known_hosts_fmt_plug.o krb5-18_fmt_plug.o krb5_tgs_fmt_plug.o krb5pa-md5_fmt_plug.o krb5pa-sha1_fmt_plug.o kwallet_fmt_plug.o lastpass_fmt_plug.o lastpass_sniffed_fmt_plug.o leet_cc_fmt_plug.o lotus5_fmt_plug.o lotus85_fmt_plug.o luks_fmt_plug.o md2_fmt_plug.o mdc2_fmt_plug.o mdc2dgst_plug.o mediawiki_fmt_plug.o mongodb_fmt_plug.o mongodb_scram_fmt_plug.o mozilla_ng_fmt_plug.o mscash1_fmt_plug.o mscash2_fmt_plug.o mscash_common_plug.o mssql-old_fmt_plug.o mssql05_fmt_plug.o mssql12_fmt_plug.o mysqlSHA1_fmt_plug.o mysql_fmt_plug.o mysql_netauth_fmt_plug.o net_md5_fmt_plug.o net_sha1_fmt_plug.o nsec3_fmt_plug.o nt2_fmt_plug.o ntlmv1_mschapv2_fmt_plug.o nukedclan_fmt_plug.o o10glogon_fmt_plug.o o3logon_fmt_plug.o o5logon_fmt_plug.o odf_fmt_plug.o office_common_plug.o office_fmt_plug.o oldoffice_fmt_plug.o openbsdsoftraid_fmt_plug.o opencl_7z_fmt_plug.o opencl_DES_bs_b_plug.o opencl_DES_bs_f_plug.o opencl_DES_bs_h_plug.o opencl_DES_bs_plug.o opencl_DES_fmt_plug.o opencl_agilekeychain_fmt_plug.o opencl_bf_fmt_plug.o opencl_bf_std_plug.o opencl_blockchain_fmt_plug.o opencl_cryptmd5_fmt_plug.o opencl_cryptsha256_fmt_plug.o opencl_cryptsha512_fmt_plug.o opencl_dmg_fmt_plug.o opencl_encfs_fmt_plug.o opencl_gpg_fmt_plug.o opencl_hash_check_128_plug.o opencl_iwork_fmt_plug.o opencl_keychain_fmt_plug.o opencl_keyring_fmt_plug.o opencl_keystore_fmt_plug.o opencl_krb5pa-md5_fmt_plug.o opencl_krb5pa-sha1_fmt_plug.o opencl_lm_b_plug.o opencl_lm_fmt_plug.o opencl_lm_plug.o opencl_lotus5_fmt_plug.o opencl_mscash2_fmt_plug.o opencl_mscash2_helper_plug.o opencl_mscash_fmt_plug.o opencl_mysqlsha1_fmt_plug.o opencl_nt_fmt_plug.o opencl_ntlmv2_fmt_plug.o opencl_o5logon_fmt_plug.o opencl_odf_aes_fmt_plug.o opencl_odf_fmt_plug.o opencl_office2007_fmt_plug.o opencl_office2010_fmt_plug.o opencl_office2013_fmt_plug.o opencl_oldoffice_fmt_plug.o opencl_pbkdf2_hmac_md4_fmt_plug.o opencl_pbkdf2_hmac_md5_fmt_plug.o opencl_pbkdf2_hmac_sha1_fmt_plug.o opencl_pbkdf2_hmac_sha256_fmt_plug.o opencl_pbkdf2_hmac_sha512_fmt_plug.o opencl_phpass_fmt_plug.o opencl_pwsafe_fmt_plug.o opencl_rakp_fmt_plug.o opencl_rar5_fmt_plug.o opencl_rar_fmt_plug.o opencl_rawmd4_fmt_plug.o opencl_rawmd5_fmt_plug.o opencl_rawsha1_fmt_plug.o opencl_rawsha256_fmt_plug.o opencl_rawsha512_fmt_plug.o opencl_rawsha512_gpl_fmt_plug.o opencl_salted_sha_fmt_plug.o opencl_sha1crypt_fmt_plug.o opencl_sha2_common_plug.o opencl_strip_fmt_plug.o opencl_sxc_fmt_plug.o opencl_tc_fmt_plug.o opencl_wpapsk_fmt_plug.o opencl_xsha512_fmt_plug.o opencl_zip_fmt_plug.o openssl_enc_fmt_plug.o oracle11_fmt_plug.o oracle12c_fmt_plug.o oracle_fmt_plug.o osc_fmt_plug.o palshop_fmt_plug.o panama_fmt_plug.o pbkdf2-hmac-md4_fmt_plug.o pbkdf2-hmac-md5_fmt_plug.o pbkdf2-hmac-sha1_fmt_plug.o pbkdf2-hmac-sha512_fmt_plug.o pbkdf2_hmac_common_plug.o pbkdf2_hmac_sha256_fmt_plug.o pdf_fmt_plug.o pdfcrack_md5_plug.o pem_fmt_plug.o pfx_fmt_plug.o pfx_ng_fmt_plug.o phpassMD5_fmt_plug.o phpass_common_plug.o pixMD5_fmt_plug.o pkcs12_plug.o pkzip_fmt_plug.o plaintext_fmt_plug.o pomelo_fmt_plug.o pomelo_plug.o postgres_fmt_plug.o pst_fmt_plug.o putty_fmt_plug.o pwsafe_fmt_plug.o qnx_fmt_plug.o racf_fmt_plug.o radmin_fmt_plug.o rakp_fmt_plug.o rar5_fmt_plug.o rar_fmt_plug.o rawBLAKE2_512_fmt_plug.o rawKeccak_256_fmt_plug.o rawKeccak_512_fmt_plug.o rawMD4_fmt_plug.o rawMD5_fmt_plug.o rawMD5flat_fmt_plug.o rawSHA1_common_plug.o rawSHA1_fmt_plug.o rawSHA1_linkedIn_fmt_plug.o rawSHA1_ng_fmt_plug.o rawSHA224_fmt_plug.o rawSHA256_common_plug.o rawSHA256_fmt_plug.o rawSHA256_ng_fmt_plug.o rawSHA384_fmt_plug.o rawSHA512_common_plug.o rawSHA512_fmt_plug.o rawSHA512_ng_fmt_plug.o rawmd5u_fmt_plug.o ripemd_fmt_plug.o rsvp_fmt_plug.o salted_sha1_common_plug.o salted_sha1_fmt_plug.o sapB_fmt_plug.o sapG_fmt_plug.o sapH_fmt_plug.o sha1crypt_common_plug.o sha3_512_fmt_plug.o siemens-s7_fmt_plug.o sip_fmt_plug.o skein_fmt_plug.o snefru_fmt_plug.o snefru_plug.o ssh_ng_fmt_plug.o ssha512_fmt_plug.o stribog_fmt_plug.o strip_fmt_plug.o sunmd5_fmt_plug.o sxc_fmt_plug.o syb-prop_repro_plug.o tcp_md5_fmt_plug.o tiger_fmt_plug.o truecrypt_fmt_plug.o twofish_plug.o vdi_fmt_plug.o vms_fmt_plug.o vnc_fmt_plug.o vtp_fmt_plug.o wbb3_fmt_plug.o whirlpool_fmt_plug.o wow_srp_fmt_plug.o wpapsk_fmt_plug.o zip_fmt_plug.o zipmonster_fmt_plug.o dyna_salt.o dummy.o gost.o common-gpu.o batch.o bench.o charset.o common.o compiler.o config.o cracker.o crc32.o external.o formats.o getopt.o idle.o inc.o john.o list.o loader.o logger.o mask.o mask_ext.o math.o memory.o misc.o options.o params.o path.o recovery.o rpp.o rules.o signals.o single.o status.o tty.o  wordlist.o mkv.o mkvlib.o listconf.o fake_salts.o win32_memmap.o uaf_encode.o unicode.o unshadow.o unafs.o undrop.o regex.o pp.o c3_fmt.o unique.o putty2john.o gpg2john.o memdbg.o common-cuda.o cuda_common.o cuda_cryptmd5.o cuda_phpass.o cuda_cryptsha256.o cuda_cryptsha512.o cuda_mscash2.o cuda_rawsha256.o cuda_rawsha224.o cuda_mscash.o cuda_xsha512.o cuda_wpapsk.o cuda_rawsha512.o cuda_pwsafe.o cuda_rawsha224_fmt.o cuda_rawsha256_fmt.o common-opencl.o opencl_autotune.o bt.o bt_hash_type_64.o bt_hash_type_128.o bt_hash_type_192.o bt_twister.o x86-64.o simd-intrinsics.o -g  -L/usr/local/lib   -lssl -lcrypto   -fopenmp -lgmp  -lrexgen  -lcudart -lOpenCL  -lm   -lm -lz -ldl -lcrypt  -lbz2  aes/aes.a -o ../run/john
+/usr/bin/ld: opencl_DES_bs_f_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: multiple definition of `opencl_DES_bs_index768'; opencl_DES_bs_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: first defined here
+/usr/bin/ld: opencl_DES_bs_h_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: multiple definition of `opencl_DES_bs_index768'; opencl_DES_bs_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: first defined here
+/usr/bin/ld: opencl_DES_bs_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: multiple definition of `opencl_DES_bs_index768'; opencl_DES_bs_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: first defined here
+/usr/bin/ld: opencl_DES_fmt_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: multiple definition of `opencl_DES_bs_index768'; opencl_DES_bs_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_DES_bs.h:65: first defined here
+/usr/bin/ld: opencl_lm_fmt_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:73: multiple definition of `opencl_lm_u'; opencl_lm_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:73: first defined here
+/usr/bin/ld: opencl_lm_fmt_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:71: multiple definition of `opencl_lm_index768'; opencl_lm_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:71: first defined here
+/usr/bin/ld: opencl_lm_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:71: multiple definition of `opencl_lm_index768'; opencl_lm_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:71: first defined here
+/usr/bin/ld: opencl_lm_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:73: multiple definition of `opencl_lm_u'; opencl_lm_b_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_lm.h:73: first defined here
+/usr/bin/ld: truecrypt_fmt_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/truecrypt_fmt_plug.c:124: multiple definition of `psalt'; opencl_tc_fmt_plug.o:/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src/opencl_tc_fmt_plug.c:90: first defined here
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:1424: ../run/john] Error 1
+make[1]: Leaving directory '/mnt/f/CTF_DRCTY/TOOLS_LIBRARY/john/src'
+make: *** [Makefile:196: default] Error 2
